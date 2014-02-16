@@ -1,0 +1,14 @@
+{
+  "name": "bright",
+  "description": "Bright theme for Shower HTML presentation engine",
+  "repository": "https://github.com/shower/bright/",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-autoprefixer": "~0.6.0",
+    "grunt-csso": "~0.5.2",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
