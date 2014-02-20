@@ -1,285 +1,286 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>UI без боли &mdash; Примеры</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=680, user-scalable=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<link rel="stylesheet" href="styles/screen.css">
+  <title>Evil Blocks — пишем лёгкий JS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=680, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/screen.css">
 </head>
 <body class="list">
 
-	<header class="caption">
-		<h1>UI без боли &mdash; Примеры</h1>
-		<p>
-			<a href="https://twitter.com/demiazz">Алексей Плуталов</a>,
-			<a href="http://evilmartians.ru">Злые Марсиане</a>
-		<p>
-	</header>
+  <header class="caption">
+    <h1>Evil Blocks — пишем лёгкий JS</h1>
+    <p>
+      <a href="https://twitter.com/demiazz">Алексей Плуталов</a> и
+      <a href="https://twitter.com/andrey_sitnik">Андрей Ситник</a>,
+      <a href="http://evilmartians.ru">Злые Марсиане</a>
+    <p>
+  </header>
 
-	<section class="slide shout"><div>
-		<h2>Блоки</h2>
-	</div></section>
+  <section class="slide shout"><div>
+    <h2>Блоки</h2>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Атрибуты</h2>
+  <section class="slide"><div>
+    <h2>Атрибуты</h2>
 
-		<pre>
-			<code>.m-popup.sk-sign-in<mark class="important">@@popup</mark></code>
-			<code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
-			<code>  </code>
-			<code>  <mark class="comment">/ эквивалентно</code>
-			<code>  </code>
-			<code>.m-popup.sk-sign-in <mark class="important">data-block="popup"</mark></code>
-			<code>  .o-icon.sk-close <mark class="important">data-role="closeButton"</mark></code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>.m-popup.sk-sign-in<mark class="important">@@popup</mark></code>
+      <code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
+      <code>  </code>
+      <code>  <mark class="comment">/ эквивалентно</code>
+      <code>  </code>
+      <code>.m-popup.sk-sign-in <mark class="important">data-block="popup"</mark></code>
+      <code>  .o-icon.sk-close <mark class="important">data-role="closeButton"</mark></code>
+    </pre>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Регистрация блока</h2>
-		<pre>
-			<code>evil.block <mark class="important">"@@popup"</mark>,</code>
-			<code>  init: -></code>
-			<code>    @adaptToScreen()</code>
-		</pre>
+  <section class="slide"><div>
+    <h2>Регистрация блока</h2>
+    <pre>
+      <code>evil.block <mark class="important">"@@popup"</mark>,</code>
+      <code>  init: -></code>
+      <code>    @adaptToScreen()</code>
+    </pre>
 
-		<p><code>@@blockName</code> транслируется в <code>[data-block=blockName]</code>.</p>
-	</div></section>
+    <p><code>@@blockName</code> транслируется в <code>[data-block=blockName]</code>.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Методы</h2>
+  <section class="slide"><div>
+    <h2>Методы</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">open</mark>: -&gt;</code>
-			<code>	@el.addClass("is-opened")</code>
-			<code>  <mark class="important">close</mark>: -&gt;</code>
-			<code>    @el.removeClass("is-opened")</code>
-		</pre>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">open</mark>: -&gt;</code>
+      <code>  @el.addClass("is-opened")</code>
+      <code>  <mark class="important">close</mark>: -&gt;</code>
+      <code>    @el.removeClass("is-opened")</code>
+    </pre>
 
-		<p><code>@el</code> ссылается на jQuery-объект текущей ноды.</p>
-	</div></section>
+    <p><code>@el</code> ссылается на jQuery-объект текущей ноды.</p>
+  </div></section>
 
-	<section class="slide shout"><div>
-		<h2>События</h2>
-	</div></section>
+  <section class="slide shout"><div>
+    <h2>События</h2>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Расширяем пример</h2>
+  <section class="slide"><div>
+    <h2>Расширяем пример</h2>
 
-		<pre>
-			<code>.m-popup.sk-sign-in-up<mark class="important">@@popup</mark></code>
-			<code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
-			<code>  form.st-sign-in-form<mark class="important">@form@signInForm</mark></code>
-			<code>  form.st-sign-up-form<mark class="important">@form@signUpForm</mark></code>
-		</pre>
+    <pre>
+      <code>.m-popup.sk-sign-in-up<mark class="important">@@popup</mark></code>
+      <code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
+      <code>  form.st-sign-in-form<mark class="important">@form@signInForm</mark></code>
+      <code>  form.st-sign-up-form<mark class="important">@form@signUpForm</mark></code>
+    </pre>
 
-		<p><em>Для простоты, поля формы опущены, а сама форма упрощена.</em></p>
-	</div></section>
+    <p><em>Для простоты, поля формы опущены, а сама форма упрощена.</em></p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>События блока</h2>
+  <section class="slide"><div>
+    <h2>События блока</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"on open"</mark>: -&gt;</code>
-			<code>    @open()</code>
-			<code>  <mark class="important">"on close"</mark>: -&gt;</code>
-			<code>    @close()</code>
-		</pre>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"on open"</mark>: -&gt;</code>
+      <code>    @open()</code>
+      <code>  <mark class="important">"on close"</mark>: -&gt;</code>
+      <code>    @close()</code>
+    </pre>
 
-		<p><b>События</b>, как внешнее API, сильно <b>снижают code coupling</b>.</p>
-	</div></section>
+    <p><b>События</b>, как внешнее API, сильно <b>снижают code coupling</b>.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>События элементов</h2>
+  <section class="slide"><div>
+    <h2>События элементов</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"ajax:beforeSend on @form"</mark>: (e) -&gt;</code>
-			<code>    e.el.find("::submit").addClass("is-inactive")</code>
-			<code>  <mark class="important">"ajax:complete on @form"</mark>: (e) -&gt;</code>
-			<code>    e.el.find("::submit").removeClass("is-inactive")</code>
-		</pre>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"ajax:beforeSend on @form"</mark>: (e) -&gt;</code>
+      <code>    e.el.find("::submit").addClass("is-inactive")</code>
+      <code>  <mark class="important">"ajax:complete on @form"</mark>: (e) -&gt;</code>
+      <code>    e.el.find("::submit").removeClass("is-inactive")</code>
+    </pre>
 
-		<p>Источник события привязывается к <code>event.el</code>.</p>
-	</div></section>
+    <p>Источник события привязывается к <code>event.el</code>.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Глобальные события</h2>
+  <section class="slide"><div>
+    <h2>Глобальные события</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"sign-in on body"</mark>: -&gt;</code>
-			<code>    @switchToSignInForm() and @open()</code>
-			<code>  <mark class="important">"sign-up on body"</mark>: -&gt;</code>
-			<code>    @switchToSignUpForm() and @open()</code>
-		</pre>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"sign-in on body"</mark>: -&gt;</code>
+      <code>    @switchToSignInForm() and @open()</code>
+      <code>  <mark class="important">"sign-up on body"</mark>: -&gt;</code>
+      <code>    @switchToSignUpForm() and @open()</code>
+    </pre>
 
-		<p><code>$("body")</code> выступает в роли <code>event channel</code>.</p>
-	</div></section>
+    <p><code>$("body")</code> выступает в роли <code>event channel</code>.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>События окна</h2>
+  <section class="slide"><div>
+    <h2>События окна</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"resize on window"</mark>: -&gt;</code>
-			<code>    @adaptToScreen()</code>
-			<code>  <mark class="important">"message on window"</mark>: (e, message) -&gt;</code>
-			<code>    if @checkMessageDomain(message)</code>
-			<code>      @processMessage(message)</code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"resize on window"</mark>: -&gt;</code>
+      <code>    @adaptToScreen()</code>
+      <code>  <mark class="important">"message on window"</mark>: (e, message) -&gt;</code>
+      <code>    if @checkMessageDomain(message)</code>
+      <code>      @processMessage(message)</code>
+    </pre>
+  </div></section>
 
-	<section class="slide shout"><div>
-		<h2>Взаимодействие</h2>
-	</div></section>
+  <section class="slide shout"><div>
+    <h2>Взаимодействие</h2>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Множественные блоки</h2>
+  <section class="slide"><div>
+    <h2>Множественные блоки</h2>
 
-		<pre>
-			<code>.m-popup.sk-sign-in-up<mark class="important">@@popup@@closable</mark></code>
-			<code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
-			<code>  form.st-sign-in-form<mark class="important">@@remoteForm@signInForm</mark></code>
-			<code>  form.st-sign-up-form<mark class="important">@@remoteForm@signUpForm</mark></code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>.m-popup.sk-sign-in-up<mark class="important">@@popup@@closable</mark></code>
+      <code>  .o-icon.sk-close<mark class="important">@closeButton</mark></code>
+      <code>  form.st-sign-in-form<mark class="important">@@remoteForm@signInForm</mark></code>
+      <code>  form.st-sign-up-form<mark class="important">@@remoteForm@signUpForm</mark></code>
+    </pre>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Вертикальное взаимодействие</h2>
+  <section class="slide"><div>
+    <h2>Вертикальное взаимодействие</h2>
 
-		<pre>
-			<code>evil.block "@@remoteForm",</code>
-			<code>  "ajax:success": -&gt;</code>
-			<code>    <mark class="important">@el.trigger("sent")</mark></code>
-			<code>  </code>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"sent on @signInForm, @signUpForm"</mark>: -&gt;</code>
-			<code>    @close()</code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>evil.block "@@remoteForm",</code>
+      <code>  "ajax:success": -&gt;</code>
+      <code>    <mark class="important">@el.trigger("sent")</mark></code>
+      <code>  </code>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"sent on @signInForm, @signUpForm"</mark>: -&gt;</code>
+      <code>    @close()</code>
+    </pre>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Горизонтальное взаимодействие</h2>
+  <section class="slide"><div>
+    <h2>Горизонтальное взаимодействие</h2>
 
-		<pre>
-			<code>evil.block "@@popup",</code>
-			<code>  open: -&gt;</code>
-			<code>    <mark class="important">$("body").trigger("close")</mark>; @show()</code>
-			<code>  </code>
-			<code>evil.block "@@popup",</code>
-			<code>  open: -&gt;</code>
-			<code>    <mark class="important">$("@@popup").trigger("close")</mark>; @show()</code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>evil.block "@@popup",</code>
+      <code>  open: -&gt;</code>
+      <code>    <mark class="important">$("body").trigger("close")</mark>; @show()</code>
+      <code>  </code>
+      <code>evil.block "@@popup",</code>
+      <code>  open: -&gt;</code>
+      <code>    <mark class="important">$("@@popup").trigger("close")</mark>; @show()</code>
+    </pre>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Наследование</h2>
+  <section class="slide"><div>
+    <h2>Наследование</h2>
 
-		<pre>
-			<code>evil.block "@@closeable",</code>
-			<code>  "click on @closeButton": -&gt;</code>
-			<code>    <mark class="important">@el.trigger("close")</mark></code>
-			<code>  </code>
-			<code>evil.block "@@popup",</code>
-			<code>  <mark class="important">"on close"</mark>: -&gt;</code>
-			<code>    @close()</code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>evil.block "@@closeable",</code>
+      <code>  "click on @closeButton": -&gt;</code>
+      <code>    <mark class="important">@el.trigger("close")</mark></code>
+      <code>  </code>
+      <code>evil.block "@@popup",</code>
+      <code>  <mark class="important">"on close"</mark>: -&gt;</code>
+      <code>    @close()</code>
+    </pre>
+  </div></section>
 
-	<section class="slide shout"><div>
-		<h2>Рендеринг</h2>
-	</div></section>
+  <section class="slide shout"><div>
+    <h2>Рендеринг</h2>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Рендеринг на сервере</h2>
+  <section class="slide"><div>
+    <h2>Рендеринг на сервере</h2>
 
-		<pre>
-			<code>evil.block "@@commentBox",</code>
-			<code>  "click on @commentButton": -&gt;</code>
-			<code>    <mark class="important">@commentForm.addClass("is-opened")</mark></code>
-		</pre>
+    <pre>
+      <code>evil.block "@@commentBox",</code>
+      <code>  "click on @commentButton": -&gt;</code>
+      <code>    <mark class="important">@commentForm.addClass("is-opened")</mark></code>
+    </pre>
 
-		<p>На сервере заранее формируется нужный HTML. На клиенте производится только
-		   переключение его видимости.</p>
-	</div></section>
+    <p>На сервере заранее формируется нужный HTML. На клиенте производится только
+       переключение его видимости.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Рендеринг на сервере по запросу</h2>
+  <section class="slide"><div>
+    <h2>Рендеринг на сервере по запросу</h2>
 
-		<pre>
-			<code>evil.block "@@commentBox",</code>
-			<code>  "ajax:success on @commentForm": (e, reply) -&gt;</code>
-				<code>   	<mark class="important">replyEl = $(reply).appendTo(@replies)</mark></code>
-				<code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
-		</pre>
+    <pre>
+      <code>evil.block "@@commentBox",</code>
+      <code>  "ajax:success on @commentForm": (e, reply) -&gt;</code>
+        <code>     <mark class="important">replyEl = $(reply).appendTo(@replies)</mark></code>
+        <code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
+    </pre>
 
-		<p>С сервера вместо JSON отправляется готовый HTML, с последующей инъекцией на страницу.</p>
-	</div></section>
+    <p>С сервера вместо JSON отправляется готовый HTML, с последующей инъекцией на страницу.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Javascript templates</h2>
+  <section class="slide"><div>
+    <h2>Javascript templates</h2>
 
-		<pre>
-			<code>evil.block "@@commentBox",</code>
-			<code>  a"jax:success on @commentForm": (e, reply) -&gt;</code>
-			<code>    <mark class="important">replyHtml = JST["comment"](reply)</mark></code>
-			<code>   	<mark class="important">replyEl = $(replyHtml).appendTo(@replies)</mark></code>
-			<code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
-		</pre>
+    <pre>
+      <code>evil.block "@@commentBox",</code>
+      <code>  a"jax:success on @commentForm": (e, reply) -&gt;</code>
+      <code>    <mark class="important">replyHtml = JST["comment"](reply)</mark></code>
+      <code>     <mark class="important">replyEl = $(replyHtml).appendTo(@replies)</mark></code>
+      <code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
+    </pre>
 
-		<p>Классический пример рендеринга на клиенте.</p>
-	</div></section>
+    <p>Классический пример рендеринга на клиенте.</p>
+  </div></section>
 
-	<section class="slide"><div>
-		<h2>Facebook React</h2>
+  <section class="slide"><div>
+    <h2>Facebook React</h2>
 
-		<pre>
-			<code>evil.block "@@commentBox",</code>
-			<code>  init: -></code>
-			<code>    $.get("/comments").done (comments) =&gt;</code>
-			<code>      for comment in comments</code>
-			<code>        <mark class="important">React.renderComponent(</mark></code>
-			<code>        <mark class="important">  Comment(comment), @el.get(0)</mark></code>
-			<code>        <mark class="important">)</mark></code>
-		</pre>
-	</div></section>
+    <pre>
+      <code>evil.block "@@commentBox",</code>
+      <code>  init: -></code>
+      <code>    $.get("/comments").done (comments) =&gt;</code>
+      <code>      for comment in comments</code>
+      <code>        <mark class="important">React.renderComponent(</mark></code>
+      <code>        <mark class="important">  Comment(comment), @el.get(0)</mark></code>
+      <code>        <mark class="important">)</mark></code>
+    </pre>
+  </div></section>
 
-	<section class="slide shout"><div>
-		<h2>Twitter Flight</h2>
-	</div></section>
+  <section class="slide shout"><div>
+    <h2>Twitter Flight</h2>
+  </div></section>
 
-	<section class="slide" lang="ru"><div>
-		<h2>Twitter Flight</h2>
+  <section class="slide" lang="ru"><div>
+    <h2>Twitter Flight</h2>
 
-		<ul>
-			<li>Официальный срок появления &mdash; на 3 месяца раньше;</li>
-			<li>Ручной биндинг объектов;</li>
-			<li>Функциональные миксины;</li>
-			<li>Компоненты и события делятся на UI и Data;</li>
-			<li>Активное использование require.js.</li>
-		</ul>
-	</div></section>
+    <ul>
+      <li>Официальный срок появления &mdash; на 3 месяца раньше;</li>
+      <li>Ручной биндинг объектов;</li>
+      <li>Функциональные миксины;</li>
+      <li>Компоненты и события делятся на UI и Data;</li>
+      <li>Активное использование require.js.</li>
+    </ul>
+  </div></section>
 
-	<section class="slide" lang="ru"><div>
-		<h2>Вопросы?</h2>
+  <section class="slide" lang="ru"><div>
+    <h2>Вопросы?</h2>
 
-		<ul>
-			<li>Evil Blocks: <a href="https://github.com/ai/evil-blocks">github.com/ai/evil-blocks</a>;</li>
-			<li>Evil Front: <a href="https://github.com/ai/evil-front">github.com/ai/evil-front</a>;</li>
-			<li>Twitter Flight: <a href="http://twitter.github.io/flight">twitter.github.io/flight</a>;</li>
-			<li>Интеграция с Rails: <a href="https://github.com/rezwyi/flight-for-rails">github.com/rezwyi/flight-for-rails</a>;</li>
-			<li>Книга для начинающих: <br><a href="http://www.packtpub.com/getting-started-with-twitter-flight/book">packtpub.com/getting-started-with-twitter-flight/book</a>.</li>
-		</ul>
-	</div></section>
-	<!--
-		To hide progress bar from entire presentation
-		just remove “progress” element.
-		-->
-	<div class="progress"><div></div></div>
-	<script src="./shower.js"></script>
-	<!-- Copyright © 2014 Alexey Plutalov, Evil Martians -->
+    <ul>
+      <li>Evil Blocks: <a href="https://github.com/ai/evil-blocks">github.com/ai/evil-blocks</a>;</li>
+      <li>Evil Front: <a href="https://github.com/ai/evil-front">github.com/ai/evil-front</a>;</li>
+      <li>Twitter Flight: <a href="http://twitter.github.io/flight">twitter.github.io/flight</a>;</li>
+      <li>Интеграция с Rails: <a href="https://github.com/rezwyi/flight-for-rails">github.com/rezwyi/flight-for-rails</a>;</li>
+      <li>Книга для начинающих: <br><a href="http://www.packtpub.com/getting-started-with-twitter-flight/book">packtpub.com/getting-started-with-twitter-flight/book</a>.</li>
+    </ul>
+  </div></section>
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"><div></div></div>
+  <script src="./shower.js"></script>
+  <!-- Copyright © 2014 Alexey Plutalov, Evil Martians -->
 </body>
 </html>
