@@ -162,7 +162,7 @@
     <pre>
       <code>evil.block "@@popup",</code>
       <code>  <mark class="important">open</mark>: -&gt;</code>
-      <code>  @el.addClass("is-opened")</code>
+      <code>    @el.addClass("is-opened")</code>
       <code>  <mark class="important">close</mark>: -&gt;</code>
       <code>    @el.removeClass("is-opened")</code>
     </pre>
@@ -322,8 +322,8 @@
     <pre>
       <code>evil.block "@@commentBox",</code>
       <code>  "ajax:success on @commentForm": (e, reply) -&gt;</code>
-        <code>     <mark class="important">replyEl = $(reply).appendTo(@replies)</mark></code>
-        <code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
+      <code>    <mark class="important">replyEl = $(reply).appendTo(@replies)</mark></code>
+      <code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
     </pre>
 
     <p>С сервера вместо JSON отправляется готовый HTML, с последующей инъекцией на страницу.</p>
@@ -336,7 +336,7 @@
       <code>evil.block "@@commentBox",</code>
       <code>  "ajax:success on @commentForm": (e, reply) -&gt;</code>
       <code>    <mark class="important">replyHtml = JST["comment"](reply)</mark></code>
-      <code>     <mark class="important">replyEl = $(replyHtml).appendTo(@replies)</mark></code>
+      <code>    <mark class="important">replyEl = $(replyHtml).appendTo(@replies)</mark></code>
       <code>    <mark class="important">evil.block.vitalize(replyEl)</mark></code>
     </pre>
 
