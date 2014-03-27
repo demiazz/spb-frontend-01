@@ -6,20 +6,45 @@
   <meta name="viewport" content="width=680, user-scalable=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="shower.css">
+
+  <style>
+    .slide.company {
+      background: white;
+      text-align: center;
+    }
+
+    .slide.company .logo {
+      border-bottom: none;
+    }
+
+    .slide.company .logo img {
+      height: 60%;
+      margin-bottom: 3%;
+    }
+
+    .slide.company p {
+      line-height: 0.2em;
+    }
+  </style>
 </head>
 <body class="list">
 
   <header class="caption">
     <h1>Evil Blocks — пишем лёгкий JS</h1>
     <p>
-      <a href="https://twitter.com/demiazz">Алексей Плуталов</a> и
-      <a href="https://twitter.com/andrey_sitnik">Андрей Ситник</a>,
+      <a href="https://twitter.com/demiazz">Алексей Плуталов</a>,
       <a href="http://evilmartians.ru">Злые Марсиане</a>
     <p>
   </header>
 
   <section class="slide shout"><div>
     <h2><strong>Evil Blocks</strong><br>пишем лёгкий JS</h2>
+  </div></section>
+
+  <section class="slide shout company"><div>
+    <a class="logo" href="http://evilmartians.ru"><img src="images/evil-martians.png"></img></a>
+    <p>Алексей Плуталов / фронтенд-инженер</p>
+    <p><a href="https://plus.google.com/+AlexeyPlutalov">+Alexey Plutalov</a> / <a href="https://github.com/demiazz">github/demiazz</a> / <a href="https://twitter.com/demiazz">@demiazz</a></p>
   </div></section>
 
   <section class="slide shout"><div>
@@ -68,7 +93,7 @@
     <h2>Рендеринг на клиенте и на сервере</h2>
     <ul>
       <li>Разные шаблонизаторы;</li>
-      <li>Дублирование i18n, хелперов и моделей;</li>
+      <li>Дублирование i18n, хелперов и моделей.</li>
     </ul>
    </div></section>
 
@@ -77,18 +102,18 @@
     <div style="float: left; width: 45%">
       <strong>Веб-сайты</strong>
       <ul>
-        <li>Потребление информации</li>
-        <li>Быстрый запуск</li>
-        <li>Индексация</li>
-        <li>Тонкий клиент</li>
+        <li>Потребление информации;</li>
+        <li>Быстрый запуск;</li>
+        <li>Индексация;</li>
+        <li>Тонкий клиент.</li>
       </ul>
     </div>
     <div style="float: right; width: 45%">
       <strong>Веб-приложения</strong>
       <ul>
-        <li>Производство информации</li>
-        <li>Работа офлайн</li>
-        <li>Тонкий сервер</li>
+        <li>Производство информации;</li>
+        <li>Работа офлайн;</li>
+        <li>Тонкий сервер.</li>
       </ul>
     </div>
    </div></section>
@@ -98,17 +123,17 @@
     <div style="float: left; width: 45%">
       <strong>Веб-сайты</strong>
       <ul>
-        <li>Рендер на сервере</li>
-        <li>На клиенте «оживляем» HTML</li>
-        <li>JS простой и чистый</li>
+        <li>Рендер на сервере;</li>
+        <li>На клиенте «оживляем» HTML;</li>
+        <li>JS простой и чистый.</li>
       </ul>
     </div>
     <div style="float: right; width: 45%">
       <strong>Веб-приложения</strong>
       <ul>
-        <li>Сервер — только JSON API</li>
-        <li>Рендер на клиенте</li>
-        <li>Сложная архитектура JS</li>
+        <li>Сервер — только JSON API;</li>
+        <li>Рендер на клиенте;</li>
+        <li>Сложная архитектура JS.</li>
       </ul>
     </div>
    </div></section>
@@ -344,16 +369,16 @@
   </div></section>
 
   <section class="slide"><div>
-    <h2>Facebook React</h2>
+    <h2>Интеграция</h2>
 
     <pre>
-      <code>evil.block "@@commentBox",</code>
+      <code>evil.block <mark class="important">"@@react"</mark>,</code>
       <code>  init: -></code>
-      <code>    $.get("/comments").done (comments) =&gt;</code>
-      <code>      for comment in comments</code>
-      <code>        <mark class="important">React.renderComponent(</mark></code>
-      <code>        <mark class="important">  Comment(comment), @el.get(0)</mark></code>
-      <code>        <mark class="important">)</mark></code>
+      <code>    cmpName = @el.data("react-component")</code>
+      <code>    cmpData = @el.data("react-data") || { }</code>
+      <code>    <mark class="important">React.renderComponent(</mark></code>
+      <code>      <mark class="important">evil.components[cmpName](cmpData), @el.get(0)</mark></code>
+      <code>    <mark class="important">)</mark></code>
     </pre>
   </div></section>
 
@@ -366,10 +391,10 @@
 
     <ul>
       <li>Официальный срок появления &mdash; на 3 месяца раньше;</li>
-      <li>Ручной биндинг объектов;</li>
+      <li>Ручной биндинг объектов (но никто мешает автоматизировать);</li>
       <li>Функциональные миксины;</li>
-      <li>Компоненты и события делятся на UI и Data;</li>
-      <li>Активное использование require.js.</li>
+      <li>Компоненты и события делятся на <code>ui</code> и <code>data</code>;</li>
+      <li>Интеграция с require.js.</li>
     </ul>
   </div></section>
 
@@ -378,12 +403,13 @@
 
     <ul>
       <li>Evil Blocks: <a href="https://github.com/ai/evil-blocks">github.com/ai/evil-blocks</a>;</li>
-      <li>Evil Front: <a href="https://github.com/ai/evil-front">github.com/ai/evil-front</a>;</li>
       <li>Twitter Flight: <a href="http://twitter.github.io/flight">twitter.github.io/flight</a>;</li>
-      <li>Интеграция с Rails: <a href="https://github.com/rezwyi/flight-for-rails">github.com/rezwyi/flight-for-rails</a>;</li>
-      <li>Книга для начинающих: <br><a href="http://www.packtpub.com/getting-started-with-twitter-flight/book">packtpub.com/getting-started-with-twitter-flight/book</a>.</li>
+      <li>Книга для начинающих по Twitter Flight: <br><a href="http://www.packtpub.com/getting-started-with-twitter-flight/book">packtpub.com/getting-started-with-twitter-flight/book</a>;</li>
+      <li>Polymer project: <a href="http://www.polymer-project.org/">polymer-project.org</a>;</li>
+      <li>component.js: <a href="https://github.com/component/component">github.com/component/component</a>.</li>
     </ul>
   </div></section>
+
   <!--
     To hide progress bar from entire presentation
     just remove “progress” element.
